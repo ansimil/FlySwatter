@@ -1,5 +1,5 @@
 const game = new Game()
-const mode = 0
+let dropdown
 
 function preload() {
     game.preload()
@@ -10,12 +10,37 @@ function setup() {
     canvas.parent("canvas");
     game.timer.countdown()
     setInterval(() => game.timer.countdown(), 1000)
-    game.themeSong.setVolume(0.2)
-    game.fasterThemeSong.setVolume(0.2)
-    game.menuMusic.setVolume(0.3)
+    game.themeSong.setVolume(0.4)
+    game.fasterThemeSong.setVolume(0.4)
+    game.menuMusic.setVolume(0.5)
     game.hitSound.setVolume(0.4)
-    game.missSound.setVolume(0.4)
+    game.missSound.setVolume(0.5)
+    game.missSound2.setVolume(0.5)
+    game.gameoverMusic.setVolume(0.5)
+
+    dropdown = createSelect()
+    dropdown.position(950, 12)
+    dropdown.option('EASY')
+    dropdown.option('MEDIUM')
+    dropdown.option('HARD')
+    dropdown.changed(changeDropdownVal)
+    
  }
+
+ function changeDropdownVal(){
+ if (dropdown.value() === 'EASY') {
+  game.menu.dropdownVal = 0
+ }
+
+ else if (dropdown.value() === 'MEDIUM') {
+  game.menu.dropdownVal = 1
+ }
+
+ else if (dropdown.value() === 'HARD') {
+  game.menu.dropdownVal = 2
+ }
+}
+
 
  function keyPressed(){
   if (keyCode === ENTER) {
@@ -24,10 +49,10 @@ function setup() {
   }
 
   if (keyCode === 80) {
-    game.gameStarted = true
-    console.log('space')
-  }
+  game.startGameSoundFunc()
+  game.gameStarted = true
  }
+}
 
  function mouseClicked() {
     game.moused()
@@ -35,7 +60,7 @@ function setup() {
  
 
  function draw(){
-
+    
     if (game.gameStarted){
     game.draw()
     if (game.youLose || game.youWin) {

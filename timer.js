@@ -41,7 +41,7 @@ timerUnder5(){
 draw () {
         textFont(game.font)
         this.winloss = (!game.youWin || !game.youLose)
-        console.log(this.winloss)
+        //console.log(this.winloss)
         //console.log(game.youLose)
         if(!game.youWin && !game.youLose) {
         

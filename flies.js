@@ -1,25 +1,26 @@
 class Flies{
     constructor(image) {
         this.flyImage = image
-        this.x = Math.random() * 450
+        this.x = constrain(Math.random() * 450, 55, 445)
+        this.y = constrain(Math.random() * 450, 55, 445)
         this.xPolarity = 1
-        this.y = Math.random() * 450
         this.yPolarity = 1
         this.collided = false
         this.randomAdder = 2
-        this.accelerator = 2
         this.randomFrameCountNumX
         this.randomFrameCountNumY
         this.count = 0
         this.difficulty = [
-            {level2: 1, level3: 2, level4: 3},
-            {level2: 1.5, level3: 2.5, level4: 3.5},
-            {level2: 2, level3: 3, level4: 4}
+            {level1: 1, level2: 0.8, level3: 0.8, level4: 0.8},
+            {level1: 3, level2: 1, level3: 1, level4: 1},
+            {level1: 5, level2: 1.2, level3: 1.2, level4: 1.2}
         ]
-        this.difficultySelector = 0
+        this.difficultySelector = game.menu.dropdownVal
         this.level2 = floor(game.winThreshold/1.2)
         this.level3 = floor(game.winThreshold/2)
         this.level4 = floor(game.winThreshold/4)
+        this.accelerator = this.difficulty[this.difficultySelector].level1
+        this.counter = 0
     }
 
     randomFrameCount() {
@@ -27,26 +28,31 @@ class Flies{
         this.randomFrameCountNumY = (Math.floor(Math.random() * 100)) + 75
             //console.log(this.randomFrameCountNum)
         if ((frameCount % this.randomFrameCountNumX) === 0) {
-                //console.log('X polarity switch')
+                
                 this.xPolarity *= -1
             }
 
             if ((frameCount % this.randomFrameCountNumY) === 0) {
-                //console.log('Y polarity switch')
+                
                 this.yPolarity *= -1
             }
     }
     
     coordinates() {
-        this.x += (Math.random(0, 0.1) * this.randomAdder) * this.xPolarity
-        this.y += (Math.random(0, 0.1) * this.randomAdder) * this.yPolarity
+        this.x += (Math.random(0, 0.1) * (this.randomAdder + this.accelerator)) * this.xPolarity
+        this.y += (Math.random(0, 0.1) * (this.randomAdder + this.accelerator)) * this.yPolarity
         if ((this.x >= 450) || (this.x <= 50)) {
-            this.xPolarity *= -1     
+            this.xPolarity *= -1  
+            console.log('X polarity switch')
         }
 
         if ((this.y >= 450) || (this.y <= 50)) {
-            this.yPolarity *= -1      
+            this.yPolarity *= -1   
+            console.log('Y polarity switch')            
         }
+        
+        
+      
     }        
     
     collision() {
@@ -60,24 +66,25 @@ class Flies{
         }
 
     draw() {
-        console.log(this.difficulty)
+        //console.log(this.difficultySelector)
+        //console.log(this.accelerator)
         if (((game.score.invertedScore) <= (this.level2)) && (game.score.invertedScore > this.level3) && (this.count < 1)) {
             console.log('level 2')
             this.count++
-            this.randomAdder += this.accelerator
+            this.randomAdder += (this.accelerator + this.difficulty[this.difficultySelector].level2)
                 }
 
         if (((game.score.invertedScore) <= (this.level3)) && (game.score.invertedScore > this.level4) && (this.count < 1)) {
-            console.log(this.level3)
-            console.log('level 3')
+            //console.log(this.level3)
+            //console.log('level 3')
             this.count++
-            this.randomAdder += (this.accelerator * 2)
+            this.randomAdder += (this.accelerator + this.difficulty[this.difficultySelector].level3)
         }
 
         if (((game.score.invertedScore) <= (this.level4+1)) && (this.count < 1)) {
-            console.log('level 4')
+            //console.log('level 4')
             this.count++
-            this.randomAdder += (this.accelerator * 3)
+            this.randomAdder += (this.accelerator + this.difficulty[this.difficultySelector].level4)
         }
 
 
@@ -85,12 +92,13 @@ class Flies{
             this.randomFrameCount()
             this.coordinates()
             this.collision()
-            image(this.flyImage, this.x, this.y, 30, 30)  
+            image(this.flyImage, constrain(this.x, 50, 450), constrain(this.y, 50, 450), 30, 30)  
         }  
 
         
             //console.log('done')
-            //console.log(this.x)
+            console.log(mouseX)
+
             }
     
     }

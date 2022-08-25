@@ -18,15 +18,15 @@ class Score {
         text('YOU WIN!!!!!!!', 75, 250)
 
         textSize(18)
-        text('press ENTER to start a new game', 65, 400)
+        text('press ENTER to start a new game', 90, 400)
     }
 
     drawLoss(){
         textSize(50)
         text('YOU LOSE!!!!!!!', 52, 250)
 
-        textSize(18)
-        text('press ENTER to start a new game', 65, 400)
+        textSize(14)
+        text('press ENTER to go back to the menu', 90, 400)
             //console.log(this.score.score)
     }
 

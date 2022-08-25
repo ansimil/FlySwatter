@@ -11,7 +11,7 @@ class Game {
         this.fliesImage
         this.impactExplosion
         this.impactSwatter
-        this.winThreshold = 6
+        this.winThreshold = 10
         this.youLose = false
         this.youWin = false
         this.flySwatted = false
@@ -19,7 +19,10 @@ class Game {
         this.themeSong
         this.fasterThemeSong
         this.menuMusic
+        this.startGameSound
+        this.gameoverMusic
         this.missSound
+        this.missSound2
         this.hitSound
         this.loseSound
         this.winSound
@@ -42,7 +45,10 @@ class Game {
         this.themeSong = loadSound('assets/BackgroundMusicSlow.mp3')
         this.fasterThemeSong = loadSound('assets/BackgroundMusicFast.mp3')
         this.menuMusic = loadSound('assets/menu_music.mp3')
-        this.missSound = loadSound('assets/Miss.mp3')
+        this.startGameSound = loadSound('assets/start_game.wav')
+        this.gameoverMusic = loadSound('assets/Gameover.mp3')
+        this.missSound = loadSound('assets/Hit_2.mp3')
+        this.missSound2 = loadSound('assets/Punch2.mp3')
         this.hitSound = loadSound('assets/Hit.mp3')
         this.loseSound = loadSound('assets/Lose.mp3')
         this.winSound = loadSound('assets/Win.wav')
@@ -75,6 +81,8 @@ class Game {
             if (fly.collided){
             game.score.score++
             game.hitSound.play()
+            game.missSound.play()
+            game.missSound2.play()
             game.removeFly()
             game.explosionCounter = 0
 
@@ -86,12 +94,15 @@ class Game {
             game.winSound.play()
             game.winCrowd.play()
             game.hitSound.play()
+            game.missSound.play()
+            game.missSound2.play()
             game.youWin = true
             image(game.impactExplosion, mouseX-50, mouseY-50, 50, 50)  
          }
          //Otherwise play the missed hit sound. No change to score or win/loss state
          else if (!fly.collided && (!game.youWin || !game.youLose)){
             game.missSound.play()
+            game.missSound2.play()
          }
          })
         }
@@ -124,6 +135,10 @@ class Game {
             //console.log(this.loseSoundPlayCount)
             if ((!this.loseSound.isPlaying()) && (this.loseSoundPlayCount < 2)) {
                 this.loseSound.play()
+
+            }
+            if (this.youLose && !this.gameoverMusic.isPlaying()) {
+                this.gameoverMusic.loop()
             }
             this.score.drawLoss()
         }
@@ -131,8 +146,12 @@ class Game {
 
     gameWon (){
         if (this.youWin){
+            
             this.score.drawWin()
             this.explosionCounter = 21
+            if(!this.gameoverMusic.isPlaying()){
+                this.gameoverMusic.loop()
+            }
             }
     }
 
@@ -151,7 +170,7 @@ class Game {
         if (!this.themeSong.isPlaying() && !this.timer.timerUnder5Secs) {
             this.themeSong.play()
         }
-        else if ((!this.fasterThemeSong.isPlaying()) && (this.timer.timerUnder5Secs) && (!this.youLose)){
+        else if ((!this.fasterThemeSong.isPlaying()) && (this.timer.timerUnder5Secs) && (!this.youLose && !this.youWin)){
             game.themeSong.stop()
             game.fasterThemeSong.play()
           }
@@ -172,6 +191,12 @@ class Game {
     reloadPage() {
         if ((this.youWin && !this.youLose) || (!this.youWin && this.youLose)) {
             window.location.reload()
+        }
+    }
+
+    startGameSoundFunc() {
+        if (!this.startGameSound.isPlaying() && !this.gameStarted) {
+            this.startGameSound.play()
         }
     }
 
