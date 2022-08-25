@@ -1,8 +1,8 @@
 class Flies{
     constructor(image) {
         this.flyImage = image
-        this.x = constrain(Math.random() * 450, 55, 445)
-        this.y = constrain(Math.random() * 450, 55, 445)
+        this.x = (Math.random() * 440) + 5
+        this.y = (Math.random() * 440) + 5
         this.xPolarity = 1
         this.yPolarity = 1
         this.collided = false
