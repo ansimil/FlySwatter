@@ -46,7 +46,7 @@ draw () {
         if(!game.youWin && !game.youLose) {
         
         if (game.timer.timerUnder5Secs && (!game.youWin && !game.youLose) && (frameCount % 3 === 0)) {
-            console.log('inside spec')
+            //console.log('inside spec')
             textSize(50)
             text(" ", 30, 50)
         }

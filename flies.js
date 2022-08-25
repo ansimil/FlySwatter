@@ -42,18 +42,16 @@ class Flies{
         this.x += (Math.random(0, 0.1) * (this.randomAdder + this.accelerator)) * this.xPolarity
         this.y += (Math.random(0, 0.1) * (this.randomAdder + this.accelerator)) * this.yPolarity
         if ((this.x >= 450) || (this.x <= 50)) {
-            this.xPolarity *= -1  
-            console.log('X polarity switch')
-        }
-
+                this.xPolarity *= -1
+            }
+        
         if ((this.y >= 450) || (this.y <= 50)) {
-            this.yPolarity *= -1   
-            console.log('Y polarity switch')            
-        }
-        
-        
-      
-    }        
+        this.yPolarity *= -1   
+        console.log('Y polarity switch')            
+    }
+    console.log(this.counter)
+    
+    }
     
     collision() {
         if (dist(mouseX-25, mouseY-50, this.x, this.y) < 25){
@@ -97,7 +95,7 @@ class Flies{
 
         
             //console.log('done')
-            console.log(mouseX)
+            //console.log(mouseX)
 
             }
     
