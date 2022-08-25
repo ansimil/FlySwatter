@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    flex-direction: column;
+}
+
+#newGameBtn {
+    position: relative;
+    top: 50px;
+    color: white;
+    height: 10%;
+    width: 10%;
+    background: rgb(41, 40, 40);
+    border-radius: 10px;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    padding: 50px, 20px, 50px, 20px
+}

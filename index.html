@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/style.css' />
     <title>Document</title>
     
 </head>
 <body>
-    <div id="canvas"></div>
+    
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <script src=https://cdn.JsDelivr.net/npm/p5/lib/addons/p5.sound.min.js></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5/lib/addons/p5.sound.min.js"></script>
     <script src="flies.js"></script>
     <script src="swatter.js"></script> 
+    <script src="timer.js"></script>
     <script src="score.js"></script> 
+    <script src="menu.js"></script>
     <script src="game.js"></script>
     <script src="main.js"></script>
-    <button onClick="window.location.reload();">Reset Game</button>
+    <div id="canvas"></div>
+    <button onClick="window.location.reload()" id="newGameBtn" >New Game</button>
 </body>
 </html>
