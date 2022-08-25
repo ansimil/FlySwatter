@@ -19,7 +19,7 @@ function setup() {
     game.gameoverMusic.setVolume(0.5)
 
     dropdown = createSelect()
-    dropdown.position(950, 12)
+    dropdown.position(950, 9)
     dropdown.option('EASY')
     dropdown.option('MEDIUM')
     dropdown.option('HARD')

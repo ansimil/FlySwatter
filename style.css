@@ -27,6 +27,7 @@ body {
 }
 
 select {
+    position: relative;
     color: black;
     height: 5%;
     width: 5%;
