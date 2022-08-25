@@ -1,11 +1,38 @@
 class Menu {
     constructor() {
         this.dropdownVal = 0
+        this.flyX = 250
+        this.flyY = 250
+        this.speed = 3
+        this.randomFrameCountNumX
+        this.randomFrameCountNumY
+        this.xPolarity = 1
+        this.yPolarity = 1
+
     }
 
+    randomFrameCount() {
+        this.randomFrameCountNumX = (Math.floor(Math.random() * 100)) + 75 
+        this.randomFrameCountNumY = (Math.floor(Math.random() * 100)) + 75
+            //console.log(this.randomFrameCountNum)
+        if (((frameCount % this.randomFrameCountNumX) === 0) || this.flyX >= 400 || this.flyX <= 0) {
+                
+                this.xPolarity *= -1
+            }
+
+            if (((frameCount % this.randomFrameCountNumY) === 0) || this.flyY >= 400 || this.flyY <= 0) {
+                
+                this.yPolarity *= -1
+            }
+
+            this.flyX += this.speed*this.xPolarity
+            this.flyY += this.speed*this.yPolarity
+            }
 
 draw() {
         //console.log(this.dropdownVal)
+        clear()
+        this.randomFrameCount()
         stroke(200)
         strokeWeight(3)
         //Horizontal Lines
@@ -42,6 +69,7 @@ draw() {
             game.menuMusic.loop()
         }
     
+        image(game.fliesImage, this.flyX, this.flyY, 100, 100)
 
 }
 

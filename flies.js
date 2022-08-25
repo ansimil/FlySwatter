@@ -12,8 +12,8 @@ class Flies{
         this.count = 0
         this.difficulty = [
             {level1: 1, level2: 4, level3: 8, level4: 10},
-            {level1: 6, level2: 7, level3: 8, level4: 10},
-            {level1: 9, level2: 11, level3: 13, level4: 15}
+            {level1: 6, level2: 4, level3: 4, level4: 4},
+            {level1: 9, level2: 5, level3: 5, level4: 5}
         ]
         this.difficultySelector = game.menu.dropdownVal
         this.level2 = floor(game.winThreshold/1.2)
