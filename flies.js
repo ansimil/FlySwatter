@@ -1,8 +1,8 @@
 class Flies{
     constructor(image) {
         this.flyImage = image
-        this.x = (Math.random() * 440) + 5
-        this.y = (Math.random() * 440) + 5
+        this.x = (Math.random() * 398) + 51
+        this.y = (Math.random() * 398) + 51
         this.xPolarity = 1
         this.yPolarity = 1
         this.collided = false
@@ -11,9 +11,9 @@ class Flies{
         this.randomFrameCountNumY
         this.count = 0
         this.difficulty = [
-            {level1: 1, level2: 0.8, level3: 0.8, level4: 0.8},
-            {level1: 3, level2: 1, level3: 1, level4: 1},
-            {level1: 5, level2: 1.2, level3: 1.2, level4: 1.2}
+            {level1: 1, level2: 4, level3: 8, level4: 10},
+            {level1: 6, level2: 7, level3: 8, level4: 10},
+            {level1: 9, level2: 11, level3: 13, level4: 15}
         ]
         this.difficultySelector = game.menu.dropdownVal
         this.level2 = floor(game.winThreshold/1.2)
@@ -39,8 +39,8 @@ class Flies{
     }
     
     coordinates() {
-        this.x += (Math.random(0, 0.1) * (this.randomAdder + this.accelerator)) * this.xPolarity
-        this.y += (Math.random(0, 0.1) * (this.randomAdder + this.accelerator)) * this.yPolarity
+        this.x += 0.3 * (this.randomAdder + this.accelerator) * this.xPolarity
+        this.y += 0.3 * (this.randomAdder + this.accelerator) * this.yPolarity
         if ((this.x >= 450) || (this.x <= 50)) {
                 this.xPolarity *= -1
             }
@@ -49,40 +49,41 @@ class Flies{
         this.yPolarity *= -1   
         console.log('Y polarity switch')            
     }
-    console.log(this.counter)
+    //console.log(this.counter)
     
     }
     
     collision() {
-        if (dist(mouseX-25, mouseY-50, this.x, this.y) < 25){
+        if (dist(mouseX, mouseY-25, this.x+15, this.y+15) < 35){
             this.collided = true   
             }
 
         else   {
             this.collided = false
-            }           
+            }     
         }
 
     draw() {
         //console.log(this.difficultySelector)
         //console.log(this.accelerator)
+        console.log(this.collided)
         if (((game.score.invertedScore) <= (this.level2)) && (game.score.invertedScore > this.level3) && (this.count < 1)) {
-            console.log('level 2')
+            //console.log('level 2')
             this.count++
-            this.randomAdder += (this.accelerator + this.difficulty[this.difficultySelector].level2)
+            this.randomAdder += (this.difficulty[this.difficultySelector].level2)
                 }
 
         if (((game.score.invertedScore) <= (this.level3)) && (game.score.invertedScore > this.level4) && (this.count < 1)) {
             //console.log(this.level3)
             //console.log('level 3')
             this.count++
-            this.randomAdder += (this.accelerator + this.difficulty[this.difficultySelector].level3)
+            this.randomAdder += (this.difficulty[this.difficultySelector].level3)
         }
 
         if (((game.score.invertedScore) <= (this.level4+1)) && (this.count < 1)) {
             //console.log('level 4')
             this.count++
-            this.randomAdder += (this.accelerator + this.difficulty[this.difficultySelector].level4)
+            this.randomAdder += (this.difficulty[this.difficultySelector].level4)
         }
 
 
@@ -90,7 +91,7 @@ class Flies{
             this.randomFrameCount()
             this.coordinates()
             this.collision()
-            image(this.flyImage, constrain(this.x, 50, 450), constrain(this.y, 50, 450), 30, 30)  
+            image(this.flyImage, this.x, this.y, 30, 30)  
         }  
 
         

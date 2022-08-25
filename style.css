@@ -1,3 +1,8 @@
+@font-face {
+    font-family: retroFont;
+    src: url('assets/Retro\ Gaming.ttf');
+  }
+
 body {
     display: flex;
     justify-content: center;
@@ -7,18 +12,31 @@ body {
 }
 
 #newGameBtn {
+
     position: relative;
-    top: 50px;
-    color: white;
+    top: 75px;
+    color: black;
     height: 10%;
     width: 10%;
-    background: rgb(41, 40, 40);
-    border-radius: 10px;
-    font-family: Arial;
+    background: white;
+    font-family: retroFont;
     font-size: 20px;
     font-weight: bold;
-    border: none;
+    border: 2px solid black;
     padding: 50px, 20px, 50px, 20px
 }
+
+select {
+    color: black;
+    height: 5%;
+    width: 5%;
+    background: white;
+    font-family: retroFont;
+    font-size: 10px;
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 20px, 20px, 20px, 20px
+}
+
 
 
