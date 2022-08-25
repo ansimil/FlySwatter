@@ -57,7 +57,7 @@ draw() {
         text('Fly Swatter', 120, 100)
 
         textSize(20)
-        text('Press P to play', 160, 400)
+        text('Press P to play', 152.5, 400)
         
         /*dropdown.position(850, 50)
         dropdown.option(0)

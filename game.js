@@ -100,7 +100,7 @@ class Game {
             image(game.impactExplosion, mouseX-50, mouseY-50, 50, 50)  
          }
          //Otherwise play the missed hit sound. No change to score or win/loss state
-         else if (!fly.collided && (!game.youWin || !game.youLose)){
+         else if (!fly.collided && (!(!game.youWin && game.youLose) || (game.youWin && !game.youLose))){
             game.missSound.play()
             game.missSound2.play()
          }
