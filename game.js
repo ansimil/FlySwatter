@@ -33,6 +33,7 @@ class Game {
         this.explosionCounter = 10
         this.maximumFlies = 0
         this.font
+        this.selectClass = document.getElementsByTagName('select')
 
     }
 
@@ -197,11 +198,16 @@ class Game {
     startGameSoundFunc() {
         if (!this.startGameSound.isPlaying() && !this.gameStarted) {
             this.startGameSound.play()
+            
         }
     }
 
     draw(){
         clear()
+        if (this.gameStarted) {
+            this.selectClass[0].className = 'active'
+            this.selectClass[0].style.visibility = 'hidden'
+        }
         background(this.backgroundColor)
         if(this.menuMusic.isPlaying){
             this.menuMusic.stop()

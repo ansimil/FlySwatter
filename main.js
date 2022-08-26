@@ -1,6 +1,6 @@
 const game = new Game()
 let dropdown
-
+selectClass = document.getElementsByTagName('select')
 function preload() {
     game.preload()
 }
@@ -24,6 +24,8 @@ function setup() {
     dropdown.option('MEDIUM')
     dropdown.option('HARD')
     dropdown.changed(changeDropdownVal)
+   
+    this.selectClass[0].classList.add('inactive')
     
  }
 
