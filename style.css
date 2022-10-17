@@ -1,23 +1,13 @@
 @font-face {
     font-family: retroFont;
-    src: url('assets/Retro\ Gaming.ttf');
+    src: url('assets/Retro_Gaming.ttf');
   }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: space-between;
-    flex-direction: column;
-}
-
 #newGameBtn {
-
     position: relative;
-    top: 75px;
     color: black;
-    height: 10%;
-    width: 10%;
+    height: fit-content;
+    width: fit-content;
     background: white;
     font-family: retroFont;
     font-size: 20px;
@@ -27,14 +17,14 @@ body {
 }
 
 .inactive {
-
     position: relative;
     color: black;
-    height: 5%;
-    width: 5%;
+    height: fit-content;
+    min-width: 4vw;
+    max-width: fit-content;
     background: white;
     font-family: retroFont;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: bold;
     border: 2px solid black;
     padding: 20px, 20px, 20px, 20px
@@ -52,6 +42,27 @@ body {
     font-weight: bold;
     border: 2px solid black;
     padding: 20px, 20px, 20px, 20px
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh
+}
+
+.newGame {
+    width: 30%;
+    margin-bottom: 5vh;
+    padding: 5px 10px 5px 10px
+}
+
+.difficulty {
+    font-family: retroFont;
+    margin-bottom: -2vh;
 }
 
 

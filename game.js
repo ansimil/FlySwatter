@@ -54,7 +54,7 @@ class Game {
         this.loseSound = loadSound('assets/Lose.mp3')
         this.winSound = loadSound('assets/Win.wav')
         this.winCrowd = loadSound('assets/Win_Crowd.wav')
-        this.font = loadFont('assets/Retro Gaming.ttf')
+        this.font = loadFont('assets/Retro_Gaming.ttf')
 
     }
     
@@ -206,6 +206,7 @@ class Game {
         if (this.gameStarted) {
             this.selectClass[0].className = 'active'
             this.selectClass[0].style.visibility = 'hidden'
+            document.getElementsByTagName('p')[0].style.visibility = 'hidden'
         }
         
 

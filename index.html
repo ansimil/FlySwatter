@@ -8,7 +8,7 @@
     <title>Document</title>
     
 </head>
-<body>
+<body class="container">
     
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5/lib/addons/p5.sound.min.js"></script>
@@ -19,7 +19,9 @@
     <script src="score.js"></script>  
     <script src="game.js"></script>
     <script src="main.js"></script>
+    <button class='newGame' onClick="window.location.reload()" id="newGameBtn" >Back to menu</button>
     <div id="canvas"></div>
-    <button onClick="window.location.reload()" id="newGameBtn" >Back to menu</button>
+    <p class="difficulty">Select difficulty:</p>
+    
 </body>
 </html>
