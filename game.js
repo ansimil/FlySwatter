@@ -178,14 +178,12 @@ class Game {
 
           else if (this.fasterThemeSong.isPlaying() && (this.youLose || this.youWin)) {
             game.fasterThemeSong.stop()
-
           }
     }
 
     explosionTimer() {
         if (this.explosionCounter < 9) {
             image(game.impactExplosion, mouseX-37.5, mouseY-75, 75, 75)
-
         }
     }
 
@@ -198,20 +196,24 @@ class Game {
     startGameSoundFunc() {
         if (!this.startGameSound.isPlaying() && !this.gameStarted) {
             this.startGameSound.play()
-            
         }
     }
 
     draw(){
         clear()
+
+
         if (this.gameStarted) {
             this.selectClass[0].className = 'active'
             this.selectClass[0].style.visibility = 'hidden'
         }
-        background(this.backgroundColor)
-        if(this.menuMusic.isPlaying){
+        
+
+        if (this.menuMusic.isPlaying){
             this.menuMusic.stop()
         }
+
+        background(this.backgroundColor)
         this.explosionCounter++
         this.background()
         this.timeIsUp() 
@@ -222,6 +224,7 @@ class Game {
         this.checkMousePressed()
         this.gameWon()
         this.playingBackgroundSound()
+
         } 
 
         
