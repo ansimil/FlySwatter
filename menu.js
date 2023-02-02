@@ -51,7 +51,7 @@ draw() {
         textFont(game.font)
 
         textSize(14)
-        text('Select Difficulty:', 340, 20)
+        // text('Select Difficulty:', 340, 20)
 
         textSize(36)
         text('Fly Swatter', 120, 100)

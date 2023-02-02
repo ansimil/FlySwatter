@@ -226,10 +226,6 @@ class Game {
         this.gameWon()
         this.playingBackgroundSound()
 
-        } 
-
-        
-        
-        
+        }     
     }
 
