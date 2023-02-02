@@ -19,9 +19,14 @@
     <script src="score.js"></script>  
     <script src="game.js"></script>
     <script src="main.js"></script>
-    <button class='newGame' onClick="window.location.reload()" id="newGameBtn" >Back to menu</button>
+    <button class='newGame loading' onClick="window.location.reload()" id="newGameBtn" >Back to menu</button>
     <div id="canvas"></div>
-    <p class="difficulty">Select difficulty:</p>
+    <div id="p5_loading" class="loadingclass">
+        <h1 class="header">Fly Swatter</h1>
+        <img src="./assets/Fly.png" alt="fly" height="200px">
+        <img src="./assets/loading_spinner.gif" alt="loading...">
+    </div>
+    <p class="difficulty loading">Select difficulty:</p>
     
 </body>
 </html>

@@ -1,11 +1,24 @@
 const game = new Game()
 let dropdown
+let loadingElements
+let loadingElementsKeys
+let loadingElementsArr = []
+
 selectClass = document.getElementsByTagName('select')
 function preload() {
     game.preload()
 }
 
 function setup() {
+    loadingElements = document.getElementsByClassName('loading')
+    loadingElementsKeys = Object.keys(loadingElements)
+    loadingElementsKeys.forEach(key => {
+      loadingElementsArr.push(loadingElements[key])
+    })
+    loadingElementsArr.forEach(element => {
+      element.classList.remove('loading')
+    })
+
     let canvas = createCanvas(500, 500);
     canvas.parent("canvas");
     game.timer.countdown()
