@@ -8,7 +8,7 @@
 
 ### About
 
-As part of the first project during the Ironhack bootcamp I was tasked will created a game using JS, HTML, CSS and the p5 library. 
+As part of the first project (week 3) during the Ironhack bootcamp I was tasked will builing a game using JS, HTML, CSS and the p5 library. 
 
 I decided to try and recreate one of my favourite games as a kid - Fly Swatter from the first Mario Paint for SNES. 
 
